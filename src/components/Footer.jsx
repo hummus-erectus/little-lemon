@@ -8,7 +8,7 @@ function Footer() {
                     <img className="footerImg" src={logoVertical} alt="Little Lemon logo full size"/>
                 </div>
                 <nav>
-                    <h3>Doormat Navigation</h3>
+                    <h3>Site Navigation</h3>
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">About</a></li>
