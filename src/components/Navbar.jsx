@@ -39,6 +39,9 @@ function Navbar() {
                     <FontAwesomeIcon icon={faBars} onClick={handleShowNavbar}/>
                 </div>
                 <div className={`nav-elements  ${showNavbar && 'active'}`}>
+                    <div className={`menu-icon  ${showNavbar && 'active'}`}>
+                        <FontAwesomeIcon icon={faBars} onClick={handleShowNavbar}/>
+                    </div>
                     <ul>
                         <li><a href="#" onClick={() => setShowNavbar(false)}>Home</a></li>
                         <li><a href="#" onClick={() => setShowNavbar(false)}>About</a></li>

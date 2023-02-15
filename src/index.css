@@ -14,6 +14,13 @@ body {
   font-family: 'Markazi Text', serif;
 }
 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.3);
+}
+
 .navbar-container{
   display: flex;
   justify-content: space-between;
@@ -38,15 +45,17 @@ body {
   padding: 1rem;
 }
 
+.menu-icon.active{
+  color:#EDEFEE;
+}
+
 
 .nav-elements {
   position: absolute;
   z-index: 100;
   right: 0;
-  top: 50px;
   margin: 0;
   padding: 0;
-  background-color: #EDEFEE;
   width: 0px;
   height: auto;
   transition: all 0.3s ease-in;
@@ -54,11 +63,15 @@ body {
   white-space: nowrap;
   font-size: 1.3rem;
   font-weight: 500;
+  background-color: #495E57;
+}
+
+.nav-elements li a {
+  color: #EDEFEE;
 }
 
 .nav-elements.active {
   width: 200px;
-
 }
 
 /* .nav-elements {
@@ -133,6 +146,8 @@ footer h3{
     overflow: visible;
     white-space: normal;
     margin: 0;
+    background-color: #EDEFEE;
+
   }
 
   .nav-elements ul{
@@ -144,5 +159,9 @@ footer h3{
 
   .nav-elements li{
     margin-inline: 1rem;
+  }
+
+  .nav-elements li a {
+    color: #333333;
   }
 }
