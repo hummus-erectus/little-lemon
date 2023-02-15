@@ -35,8 +35,8 @@ function Navbar() {
                 <a href="#" className='navbar-img-container' onClick={() => setShowNavbar(false)}>
                     <img src={logo} alt="Little Lemon logo"/>
                 </a>
-                <div className="menu-icon">
-                    <FontAwesomeIcon icon={faBars} onClick={handleShowNavbar}/>
+                <div className="menu-icon" onClick={handleShowNavbar}>
+                    <FontAwesomeIcon icon={faBars} />
                 </div>
                 <div className={`nav-elements  ${showNavbar && 'active'}`}>
                     <div className={`menu-icon  ${showNavbar && 'active'}`}>
