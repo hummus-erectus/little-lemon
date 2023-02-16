@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navbar from './components/Navbar'
 import Header from './components/Header'
-import HomePage from "./components/HomePage"
-import NotFound from "./components/NotFound"
+import HomePage from "./pages/HomePage"
+import NotFound from "./pages/NotFound"
 import Main from './components/Main'
 import Footer from './components/Footer'
 
@@ -11,8 +11,8 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <Header />
-        <Main />
+        {/* <Header />
+        <Main /> */}
         <Routes>
           <Route path="/" element={<HomePage />}/>
           <Route path='/404' element={<NotFound />}/>

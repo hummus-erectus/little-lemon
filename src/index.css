@@ -1,11 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&display=swap');
+
+*{
+  margin:0;
+}
+
 body {
   margin: 0;
   color: #333333;
+  font-family: 'Karla', sans-serif;
+}
+
+h1 {
+  font-family: 'Markazi Text', serif;
+}
+
+a {
+  width: max-content;
 }
 
 .container{
   max-width: 1140px;
+  padding-inline: 16px;
   margin: 0 auto;
 }
 
@@ -24,6 +40,7 @@ body {
 .navbar-container{
   display: flex;
   justify-content: space-between;
+  padding-right: 0px;
 }
 
 .navbar-img-container{
@@ -33,7 +50,6 @@ body {
 .navbar-img-container img{
   width: auto;
   padding-block: 8px;
-  margin-inline: 1rem;
 }
 
 .menu-icon{
@@ -56,6 +72,7 @@ body {
   right: 0;
   margin: 0;
   padding: 0;
+  padding-bottom: 16px;
   width: 0px;
   height: auto;
   transition: all 0.3s ease-in;
@@ -74,6 +91,16 @@ body {
   width: 200px;
 }
 
+.navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
 /* .nav-elements {
   display: flex;
   flex-direction: column;
@@ -83,6 +110,65 @@ body {
   margin-right: unset;
   margin-top: 22px;
 } */
+
+header{
+  background-color: #495E57;
+  color: #EDEFEE;
+}
+
+.header-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+.title {
+  font-size: 56px;
+  color: #F4CE14;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-top: -6px;
+  font-size: 30px;
+}
+
+.leadText {
+  margin-top: 6px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Karla', sans-serif;
+}
+
+button{
+  border-radius: 16px;
+  font-size: 16px;
+  background: #F4CE14;
+  border-style: none;
+  font-weight: 700;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #495E57;
+  color: #EDEFEE;
+}
+
+.header-text-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Markazi Text', serif;
+}
+
+.header-img{
+  max-width: 100%;
+  padding-block: 16px;
+  height: auto;
+  object-fit: cover;
+}
 
 li{
   list-style-type: none;
@@ -147,6 +233,7 @@ footer h3{
     white-space: normal;
     margin: 0;
     background-color: #EDEFEE;
+    padding-bottom: 0px;
 
   }
 
@@ -163,5 +250,10 @@ footer h3{
 
   .nav-elements li a {
     color: #333333;
+  }
+
+  .header-container{
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-gap: 20px;
   }
 }
