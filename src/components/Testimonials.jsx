@@ -13,7 +13,7 @@ function Testimonials() {
     }, [testimonialsData.length]);
 
     return (
-        <section>
+        <section className="testimonials-section">
             <div className="container testimonials-container">
                 <h2>Testimonials</h2>
                 <div className="testimonials-carousel">

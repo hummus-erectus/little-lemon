@@ -1,4 +1,4 @@
-import Chicago from "../components/Chicago"
+import About from "../components/About"
 import CTA from "../components/CTA"
 import Specials from "../components/Specials"
 import Testimonials from "../components/Testimonials"
@@ -9,7 +9,7 @@ function HomePage() {
             <CTA />
             <Specials />
             <Testimonials />
-            <Chicago />
+            <About />
         </>
     )
 }
