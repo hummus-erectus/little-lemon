@@ -47,7 +47,7 @@ function Navbar() {
                         <li><Link to="/" onClick={() => setShowNavbar(false)}>Home</Link></li>
                         <li><Link to="" onClick={() => setShowNavbar(false)}>About</Link></li>
                         <li><Link to="" onClick={() => setShowNavbar(false)}>Menu</Link></li>
-                        <li><Link to="" onClick={() => setShowNavbar(false)}>Reservations</Link></li>
+                        <li><Link to="/booking" onClick={() => setShowNavbar(false)}>Reservations</Link></li>
                         <li><Link to="" onClick={() => setShowNavbar(false)}>Order Online</Link></li>
                         <li><Link to="" onClick={() => setShowNavbar(false)}>Login</Link></li>
                     </ul>
