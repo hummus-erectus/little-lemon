@@ -282,6 +282,18 @@ li a{
 
 
 
+
+.booking-form{
+  display: grid;
+  max-width: 200px;
+  gap: 20px;
+}
+
+
+
+
+
+
 .footer-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -363,7 +375,7 @@ footer h3{
 
   .nav-elements{
     display: flex;
-    justify-content:end;
+    justify-content:flex-end;
     position: static;
     z-index: auto;
     width: auto;
