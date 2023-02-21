@@ -24,6 +24,8 @@ function BookingPage() {
 
     return (
         <>
+            <h1>Reserve a Table</h1>
+            <p>Whatever the occasion, you and your party will always feel welcome at Little Lemon.</p>
             <BookingForm availableTimes={availableTimes} updateTimes={updateTimes}/>
         </>
     )
