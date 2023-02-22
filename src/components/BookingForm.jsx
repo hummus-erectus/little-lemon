@@ -5,7 +5,7 @@ function BookingForm({availableTimes, updateTimes}) {
     const [time, setTime] = useState("17:00")
     const [guests, setGuests] = useState(1)
     const [occasion, setOccasion] = useState("Birthday")
-   
+
     const handleSubmit = (event) => {
         event.preventDefault()
         // Handle form submission
