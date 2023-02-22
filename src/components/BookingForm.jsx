@@ -14,7 +14,7 @@ function BookingForm({availableTimes, updateTimes}) {
     const handleDateChange = (event) => {
         const selectedDate = event.target.value;
         setDate(selectedDate);
-        updateTimes({ type: "UPDATE_TIMES", payload: { date: selectedDate } });
+        updateTimes(new Date(event.target.value));
       }
 
 

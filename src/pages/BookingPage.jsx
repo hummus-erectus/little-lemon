@@ -1,11 +1,12 @@
 import { useReducer } from "react"
+import { fetchAPI, submitAPI } from "../components/api"
 
 import BookingForm from "../components/BookingForm"
 
 function BookingPage() {
 
     const initializeTimes = () => (
-        ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]
+        fetchAPI(new Date)
     )
 
     const [availableTimes, dispatch] = useReducer((state, action) => {
@@ -18,7 +19,7 @@ function BookingPage() {
     }, initializeTimes())
 
     const updateTimes = (date) => {
-        const updatedTimes = initializeTimes()
+        const updatedTimes = fetchAPI(date)
         dispatch({ type: "UPDATE_TIMES", payload: updatedTimes })
     }
 
