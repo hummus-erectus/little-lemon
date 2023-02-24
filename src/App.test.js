@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import BookingPage, {fetchAPI} from './pages/BookingPage'
 
@@ -15,41 +15,41 @@ test('Renders the booking page heading', () => {
   expect(headingElement).toBeInTheDocument()
 })
 
-test('initializeTimes returns an array with at least one value, which is then mapped to select options', () => {
-  render(<BookingPage />)
-  expect(document.querySelectorAll('#res-time > option').length).toBeGreaterThan(0)
-})
 
-jest.mock('./components/api', () => ({
-  fetchAPI: (date) => {
-    if (date.toDateString() === new Date().toDateString()) {
-      return ["17:00", "18:00", "19:00"]
-    } else if (date.toDateString() === new Date("2022-12-31").toDateString()) {
-      return ["15:00", "16:00", "17:00"]
-    } else {
-      return []
-    }
-  }
-}))
+describe("Reservation Form HTML validation", () => {
 
-test('updateTimes returns an array that matches that held within state', () => {
-  render(<BookingPage />)
-  const dateInput = screen.getByLabelText('Choose Date')
-  const timeSelect = screen.getByLabelText('Choose Time')
 
-  // Check initial state
-  expect(timeSelect).toHaveTextContent('17:00')
+  test('updateTimes returns an array that matches that held within state', () => {
+    // jest.mock('./components/api', () => ({
+    //   fetchAPI: (date) => {
+    //     if (date.toDateString() === new Date().toDateString()) {
+    //       return ["17:00", "18:00", "19:00"]
+    //     } else if (date.toDateString() === new Date("2022-12-31").toDateString()) {
+    //       return ["15:00", "16:00", "17:00"]
+    //     } else {
+    //       return []
+    //     }
+    //   }
+    // }))
 
-  // Fire a change event on the date input
-  fireEvent.change(dateInput, { target: { value: '2022-12-31' } })
+    render(<BookingPage />)
+    const dateInput = screen.getByLabelText('Choose Date')
+    const timeSelect = screen.getByLabelText('Choose Time')
 
-  // Check that the time select options have changed
-  expect(timeSelect).toHaveTextContent('17:00')
-})
+    // Check initial state
+    expect(timeSelect).toHaveTextContent('17:0017:3018:3019:0020:0022:0022:30')
 
-test('initializeTimes returns an array with at least one value, which is then mapped to select options', () => {
-  render(<BookingPage />)
-  expect(document.querySelectorAll('#res-time > option').length).toBeGreaterThan(0)
+    // Fire a change event on the date input
+    fireEvent.change(dateInput, { target: { value: '2022-12-31' } })
+
+    // Check that the time select options have changed
+    expect(timeSelect).toHaveTextContent('17:0017:3018:0018:3021:0021:3022:0023:00')
+  })
+
+  test('initializeTimes returns an array with at least one value, which is then mapped to select options', () => {
+    render(<BookingPage />)
+    expect(document.querySelectorAll('#res-time > option').length).toBeGreaterThan(0)
+  })
 })
 
 describe("Reservation Form HTML validation", () => {
@@ -111,13 +111,12 @@ describe("Reservation Form HTML validation", () => {
 })
 
 describe("submit button should be disabled if any required fields have no input, not disabled if all required fields have input", () => {
-  test('button is enabled when all inputs are included', async () => {
+  test('button is enabled when all inputs are included', () => {
     render(<BookingPage />)
     const dateInput = screen.getByLabelText("Choose Date")
     fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
-    // await waitFor( () => expect(document.querySelectorAll('#res-time > option').length).toBeGreaterThan(0))
-    // const timeSelect = screen.getByLabelText("Choose Time")
-    // userEvent.selectOptions(timeSelect, "17:00")
+    const timeSelect = screen.getByLabelText("Choose Time")
+    userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
     const firstNameInput = screen.getByLabelText("First Name")
@@ -133,8 +132,8 @@ describe("submit button should be disabled if any required fields have no input,
     render(<BookingPage />)
     const dateInput = screen.getByLabelText("Choose Date")
     fireEvent.change(dateInput, { target: { value: '' } })
-    // const timeSelect = screen.getByLabelText("Choose Time")
-    // userEvent.selectOptions(timeSelect, "17:00")
+    const timeSelect = screen.getByLabelText("Choose Time")
+    userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
     const firstNameInput = screen.getByLabelText("First Name")
