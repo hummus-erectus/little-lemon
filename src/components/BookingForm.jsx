@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function BookingForm({availableTimes, updateTimes, submitForm}) {
+    const [valid, setValid] = useState(false)
     const [date, setDate] = useState("")
     const [time, setTime] = useState("17:00")
     const [firstName, setFirstName] = useState("")
@@ -13,8 +14,17 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
     const [comments, setComments] = useState("")
 
     const validate = () => {
-        return date.length && time.length && firstName.length && lastName.length && email.length
+        if(date.length && time.length && firstName.length && lastName.length && email.length && guests){
+            return true
+        } else {
+            return false
+        }
     }
+
+    useEffect(() => {
+        const isValid = validate()
+        setValid(isValid)
+    }, [date, time, firstName, lastName, email, guests])
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -45,7 +55,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
     return (
         <>
             <form className="booking-form" onSubmit={handleSubmit}>
-                <label htmlFor="res-date">Choose date</label>
+                <label htmlFor="res-date">Choose Date</label>
                 <input
                     type="date"
                     id="res-date"
@@ -54,7 +64,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                     onChange={handleDateChange}
                 />
 
-                <label htmlFor="res-time">Choose time</label>
+                <label htmlFor="res-time">Choose Time</label>
                 <select
                     id="res-time"
                     value={time}
@@ -68,7 +78,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                 ))}
                 </select>
 
-                <label htmlFor="guests">Number of guests</label>
+                <label htmlFor="guests">Number of Guests</label>
                 <input
                     type="number"
                     placeholder="1"
@@ -138,6 +148,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                     id="occasion"
                     value={occasion}
                     onChange={(event) => setOccasion(event.target.value)}
+                    required
                 >
                     <option>None</option>
                     <option>Birthday</option>
@@ -155,7 +166,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                         onChange={(e) => setComments(e.target.value)}
                     />
 
-                <button type="submit" disabled={!validate()}>
+                <button id="submitBtn" type="submit" disabled={!valid}>
                     Reserve
                 </button>
             </form>
