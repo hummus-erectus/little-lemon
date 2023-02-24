@@ -289,7 +289,9 @@ li a{
   gap: 20px;
 }
 
-
+textarea {
+  resize: none;
+}
 
 
 
