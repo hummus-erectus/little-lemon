@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function BookingForm({availableTimes, updateTimes}) {
+function BookingForm({availableTimes, updateTimes, submitForm}) {
     const [date, setDate] = useState("")
     const [time, setTime] = useState("17:00")
     const [guests, setGuests] = useState(1)
@@ -8,7 +8,19 @@ function BookingForm({availableTimes, updateTimes}) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // Handle form submission
+        const formData = {
+            // firstName,
+            // lastName,
+            // email,
+            // tel,
+            date,
+            time,
+            guests,
+            occasion,
+            // preferences,
+            // comments,
+        }
+        submitForm(formData)
     }
 
     const handleDateChange = (event) => {
