@@ -159,6 +159,9 @@ button:active {
   background-color: #495E57;
   color: #EDEFEE;
 }
+button:disabled {
+  pointer-events: none;
+}
 
 .header-text-container{
   display: flex;
@@ -488,7 +491,8 @@ footer h3{
   }
 
   .booking-img{
-    width: 100%;
+    max-width: 768px;
+
   }
 }
 
