@@ -16,21 +16,13 @@ test('Renders the booking page heading', () => {
 })
 
 
-describe("Reservation Form HTML validation", () => {
-
+describe("Mock API returns time values", () => {
+  test('initializeTimes returns an array with at least one value, which is then mapped to select options', () => {
+    render(<BookingPage />)
+    expect(document.querySelectorAll('#res-time > option').length).toBeGreaterThan(0)
+  })
 
   test('updateTimes returns an array that matches that held within state', () => {
-    // jest.mock('./components/api', () => ({
-    //   fetchAPI: (date) => {
-    //     if (date.toDateString() === new Date().toDateString()) {
-    //       return ["17:00", "18:00", "19:00"]
-    //     } else if (date.toDateString() === new Date("2022-12-31").toDateString()) {
-    //       return ["15:00", "16:00", "17:00"]
-    //     } else {
-    //       return []
-    //     }
-    //   }
-    // }))
 
     render(<BookingPage />)
     const dateInput = screen.getByLabelText('Choose Date')
@@ -46,10 +38,6 @@ describe("Reservation Form HTML validation", () => {
     expect(timeSelect).toHaveTextContent('17:0017:3018:0018:3021:0021:3022:0023:00')
   })
 
-  test('initializeTimes returns an array with at least one value, which is then mapped to select options', () => {
-    render(<BookingPage />)
-    expect(document.querySelectorAll('#res-time > option').length).toBeGreaterThan(0)
-  })
 })
 
 describe("Reservation Form HTML validation", () => {
@@ -142,6 +130,91 @@ describe("submit button should be disabled if any required fields have no input,
     fireEvent.change(lastNameInput, { target: { value: 'Smith' } })
     const emailInput = screen.getByLabelText("Email")
     fireEvent.change(emailInput, { target: { value: 'john.smith@gmail.com' } })
+    expect(document.getElementById('submitBtn')).toHaveProperty('disabled', true)
+  })
+
+  test('button is disabled when time is unselected', () => {
+    render(<BookingPage />)
+    const dateInput = screen.getByLabelText("Choose Date")
+    fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
+    const timeSelect = screen.getByLabelText("Choose Time")
+    fireEvent.change(timeSelect, { target: { value:"" } })
+    const guestSelect = screen.getByLabelText("Number of Guests")
+    fireEvent.change(guestSelect, { target: { value:"4" } })
+    const firstNameInput = screen.getByLabelText("First Name")
+    fireEvent.change(firstNameInput, { target: { value: 'John' } })
+    const lastNameInput = screen.getByLabelText("Last Name")
+    fireEvent.change(lastNameInput, { target: { value: 'Smith' } })
+    const emailInput = screen.getByLabelText("Email")
+    fireEvent.change(emailInput, { target: { value: 'john.smith@gmail.com' } })
+    expect(document.getElementById('submitBtn')).toHaveProperty('disabled', true)
+  })
+
+  test('button is disabled when guests is unselected', () => {
+    render(<BookingPage />)
+    const dateInput = screen.getByLabelText("Choose Date")
+    fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
+    const timeSelect = screen.getByLabelText("Choose Time")
+    userEvent.selectOptions(timeSelect, "17:00")
+    const guestSelect = screen.getByLabelText("Number of Guests")
+    fireEvent.change(guestSelect, { target: { value:"" } })
+    const firstNameInput = screen.getByLabelText("First Name")
+    fireEvent.change(firstNameInput, { target: { value: 'John' } })
+    const lastNameInput = screen.getByLabelText("Last Name")
+    fireEvent.change(lastNameInput, { target: { value: 'Smith' } })
+    const emailInput = screen.getByLabelText("Email")
+    fireEvent.change(emailInput, { target: { value: 'john.smith@gmail.com' } })
+    expect(document.getElementById('submitBtn')).toHaveProperty('disabled', true)
+  })
+
+  test('button is disabled when first name is unselected', () => {
+    render(<BookingPage />)
+    const dateInput = screen.getByLabelText("Choose Date")
+    fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
+    const timeSelect = screen.getByLabelText("Choose Time")
+    userEvent.selectOptions(timeSelect, "17:00")
+    const guestSelect = screen.getByLabelText("Number of Guests")
+    fireEvent.change(guestSelect, { target: { value:"4" } })
+    const firstNameInput = screen.getByLabelText("First Name")
+    fireEvent.change(firstNameInput, { target: { value: '' } })
+    const lastNameInput = screen.getByLabelText("Last Name")
+    fireEvent.change(lastNameInput, { target: { value: 'Smith' } })
+    const emailInput = screen.getByLabelText("Email")
+    fireEvent.change(emailInput, { target: { value: 'john.smith@gmail.com' } })
+    expect(document.getElementById('submitBtn')).toHaveProperty('disabled', true)
+  })
+
+  test('button is disabled when last name is unselected', () => {
+    render(<BookingPage />)
+    const dateInput = screen.getByLabelText("Choose Date")
+    fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
+    const timeSelect = screen.getByLabelText("Choose Time")
+    userEvent.selectOptions(timeSelect, "17:00")
+    const guestSelect = screen.getByLabelText("Number of Guests")
+    fireEvent.change(guestSelect, { target: { value:"4" } })
+    const firstNameInput = screen.getByLabelText("First Name")
+    fireEvent.change(firstNameInput, { target: { value: 'John' } })
+    const lastNameInput = screen.getByLabelText("Last Name")
+    fireEvent.change(lastNameInput, { target: { value: '' } })
+    const emailInput = screen.getByLabelText("Email")
+    fireEvent.change(emailInput, { target: { value: 'john.smith@gmail.com' } })
+    expect(document.getElementById('submitBtn')).toHaveProperty('disabled', true)
+  })
+
+  test('button is disabled when email is unselected', () => {
+    render(<BookingPage />)
+    const dateInput = screen.getByLabelText("Choose Date")
+    fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
+    const timeSelect = screen.getByLabelText("Choose Time")
+    userEvent.selectOptions(timeSelect, "17:00")
+    const guestSelect = screen.getByLabelText("Number of Guests")
+    fireEvent.change(guestSelect, { target: { value:"4" } })
+    const firstNameInput = screen.getByLabelText("First Name")
+    fireEvent.change(firstNameInput, { target: { value: 'John' } })
+    const lastNameInput = screen.getByLabelText("Last Name")
+    fireEvent.change(lastNameInput, { target: { value: 'Smith' } })
+    const emailInput = screen.getByLabelText("Email")
+    fireEvent.change(emailInput, { target: { value: '' } })
     expect(document.getElementById('submitBtn')).toHaveProperty('disabled', true)
   })
 })
