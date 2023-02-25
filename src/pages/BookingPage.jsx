@@ -1,6 +1,7 @@
 import { useReducer } from "react"
 import { useNavigate } from "react-router-dom"
 import { fetchAPI, submitAPI } from "../components/api"
+import interior from "../assets/interior.webp"
 
 import BookingForm from "../components/BookingForm"
 
@@ -34,11 +35,12 @@ function BookingPage() {
     }
 
     return (
-        <>
+        <main className="container booking-page">
+            <img src={interior} alt="Little Lemon Interior" className="booking-img" />
             <h1>Reserve a Table</h1>
             <p>Whatever the occasion, you and your party will always feel welcome at Little Lemon.</p>
             <BookingForm availableTimes={availableTimes} updateTimes={updateTimes} submitForm={submitForm}/>
-        </>
+        </main>
     )
 }
 

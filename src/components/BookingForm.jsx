@@ -55,116 +55,139 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
     return (
         <>
             <form className="booking-form" onSubmit={handleSubmit}>
-                <label htmlFor="res-date">Choose Date</label>
-                <input
-                    type="date"
-                    id="res-date"
-                    required
-                    value={date}
-                    onChange={handleDateChange}
-                />
+                <div className="date-and-time">
+                    <div>
+                        <label htmlFor="res-date">Date</label>
+                        <input
+                            type="date"
+                            id="res-date"
+                            required
+                            value={date}
+                            onChange={handleDateChange}
+                        />
+                    </div>
 
-                <label htmlFor="res-time">Choose Time</label>
-                <select
-                    id="res-time"
-                    value={time}
-                    required
-                    onChange={(event) => setTime(event.target.value)}
-                >
-                {availableTimes.map((availableTime) => (
-                    <option key={availableTime} value={availableTime}>
-                        {availableTime}
-                    </option>
-                ))}
-                </select>
+                    <div>
+                        <label htmlFor="res-time">Time</label>
+                        <select
+                            id="res-time"
+                            value={time}
+                            required
+                            onChange={(event) => setTime(event.target.value)}
+                        >
+                        {availableTimes.map((availableTime) => (
+                            <option key={availableTime} value={availableTime}>
+                                {availableTime}
+                            </option>
+                        ))}
+                        </select>
+                    </div>
+                </div>
 
-                <label htmlFor="guests">Number of Guests</label>
-                <input
-                    type="number"
-                    placeholder="1"
-                    required
-                    min="1"
-                    max="10"
-                    id="guests"
-                    value={guests}
-                    onChange={(event) => setGuests(event.target.value)}
-                />
-
-                <label htmlFor="firstName">First Name</label>
-                <input
-                    type="text"
-                    id="firstName"
-                    required
-                    minLength={1}
-                    maxLength={30}
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                    type="text"
-                    id="lastName"
-                    required
-                    minLength={1}
-                    maxLength={30}
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-
-                <label htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    required
-                    maxLength={200}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <label>
+                <div>
+                    <label className="guest-label" htmlFor="guests">Number of Guests</label>
                     <input
-                        type="checkbox"
-                        id="confirm"
-                        value={confirm}
-                        onChange={(e) => setConfirm(e.target.value)}
+                        type="number"
+                        placeholder="1"
+                        required
+                        min="1"
+                        max="10"
+                        id="guests"
+                        value={guests}
+                        onChange={(event) => setGuests(event.target.value)}
                     />
-                    Please email me confirmation of my booking
-                </label>
+                </div>
 
+                <div className="full-name">
+                    <div>
+                        <label htmlFor="firstName">First Name</label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            required
+                            minLength={1}
+                            maxLength={30}
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                        />
+                    </div>
 
-                <label htmlFor="tel">Phone Number</label>
-                <input
-                    type="tel"
-                    id="tel"
-                    value={tel}
-                    minLength={10}
-                    maxLength={25}
-                    onChange={(e) => setTel(e.target.value)}
-                />
+                    <div>
+                        <label htmlFor="lastName">Last Name</label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            required
+                            minLength={1}
+                            maxLength={30}
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                        />
+                    </div>
+                </div>
 
-                <label htmlFor="occasion">Occasion</label>
-                <select
-                    id="occasion"
-                    value={occasion}
-                    onChange={(event) => setOccasion(event.target.value)}
-                    required
-                >
-                    <option>None</option>
-                    <option>Birthday</option>
-                    <option>Anniversary</option>
-                    <option>Work Party</option>
-                    <option>Other</option>
-                </select>
-
-                <label htmlFor="comments">Additional Comments</label>
-                    <textarea
-                        id="comments"
-                        rows={8}
-                        maxLength={280}
-                        value={comments}
-                        onChange={(e) => setComments(e.target.value)}
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        required
+                        maxLength={200}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
+                </div>
+
+                <div>
+                    <label className="checkbox-label">
+                        Email confirmation of my booking
+                        <input
+                            type="checkbox"
+                            id="confirm"
+                            value={confirm}
+                            onChange={(e) => setConfirm(e.target.value)}
+                        />
+                    </label>
+                </div>
+
+                <div>
+                    <label htmlFor="tel">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="tel"
+                        value={tel}
+                        minLength={10}
+                        maxLength={25}
+                        onChange={(e) => setTel(e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="occasion">Occasion</label>
+                    <select
+                        id="occasion"
+                        value={occasion}
+                        onChange={(event) => setOccasion(event.target.value)}
+                        required
+                    >
+                        <option>None</option>
+                        <option>Birthday</option>
+                        <option>Anniversary</option>
+                        <option>Work Party</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label htmlFor="comments">Additional Comments</label>
+                        <textarea
+                            id="comments"
+                            rows={8}
+                            maxLength={280}
+                            value={comments}
+                            onChange={(e) => setComments(e.target.value)}
+                    />
+                </div>
 
                 <button id="submitBtn" type="submit" disabled={!valid}>
                     Reserve

@@ -25,8 +25,8 @@ describe("Mock API returns time values", () => {
   test('updateTimes returns an array that matches that held within state', () => {
 
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText('Choose Date')
-    const timeSelect = screen.getByLabelText('Choose Time')
+    const dateInput = screen.getByLabelText('Date')
+    const timeSelect = screen.getByLabelText('Time')
 
     // Check initial state
     expect(timeSelect).toHaveTextContent('17:0017:3018:3019:0020:0022:0022:30')
@@ -43,13 +43,13 @@ describe("Mock API returns time values", () => {
 describe("Reservation Form HTML validation", () => {
   test("should have required attribute for date input", () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     expect(dateInput).toHaveAttribute("required")
   })
 
   test("should have required attribute for time select", () => {
     render(<BookingPage />)
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     expect(timeSelect).toHaveAttribute("required")
   })
 
@@ -101,9 +101,9 @@ describe("Reservation Form HTML validation", () => {
 describe("submit button should be disabled if any required fields have no input, not disabled if all required fields have input", () => {
   test('button is enabled when all inputs are included', () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
@@ -118,9 +118,9 @@ describe("submit button should be disabled if any required fields have no input,
 
   test('button is disabled when date is unselected', () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     fireEvent.change(dateInput, { target: { value: '' } })
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
@@ -135,9 +135,9 @@ describe("submit button should be disabled if any required fields have no input,
 
   test('button is disabled when time is unselected', () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     fireEvent.change(timeSelect, { target: { value:"" } })
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
@@ -152,9 +152,9 @@ describe("submit button should be disabled if any required fields have no input,
 
   test('button is disabled when guests is unselected', () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"" } })
@@ -169,9 +169,9 @@ describe("submit button should be disabled if any required fields have no input,
 
   test('button is disabled when first name is unselected', () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
@@ -186,9 +186,9 @@ describe("submit button should be disabled if any required fields have no input,
 
   test('button is disabled when last name is unselected', () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
@@ -203,9 +203,9 @@ describe("submit button should be disabled if any required fields have no input,
 
   test('button is disabled when email is unselected', () => {
     render(<BookingPage />)
-    const dateInput = screen.getByLabelText("Choose Date")
+    const dateInput = screen.getByLabelText("Date")
     fireEvent.change(dateInput, { target: { value: '2023-05-05' } })
-    const timeSelect = screen.getByLabelText("Choose Time")
+    const timeSelect = screen.getByLabelText("Time")
     userEvent.selectOptions(timeSelect, "17:00")
     const guestSelect = screen.getByLabelText("Number of Guests")
     fireEvent.change(guestSelect, { target: { value:"4" } })
