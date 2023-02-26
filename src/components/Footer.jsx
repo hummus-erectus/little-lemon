@@ -22,17 +22,17 @@ function Footer() {
                 <nav>
                     <h3>Contact</h3>
                     <ul>
-                        <li>Address</li>
-                        <li>Phone number</li>
-                        <li>email</li>
+                        <li>123 Fake Street Chicago IL</li>
+                        <li>050 1234 4321</li>
+                        <li>info@littlelemon.com</li>
                     </ul>
                 </nav>
                 <nav>
                     <h3>Social Media Links</h3>
                     <ul>
-                        <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
-                        <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
-                        <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a></li>
+                        <li><a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a></li>
                     </ul>
                 </nav>
             </div>
