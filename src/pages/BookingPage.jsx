@@ -34,12 +34,12 @@ function BookingPage() {
         console.log(data)
         updateBookingData(data)
         if (submitAPI(data) === true) {
-            navigate('/confirmation');
+            navigate('/confirmation')
         }
     }
 
     return (
-        <main className="container booking-page">
+        <main className="container booking booking-page">
             <img src={interior} alt="Little Lemon Interior" className="booking-img" />
             <h1>Reserve a Table</h1>
             <p>Whatever the occasion, you and your party will always feel welcome at Little Lemon.</p>

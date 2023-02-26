@@ -265,7 +265,6 @@ li a{
   background-color: #F4CE14;
   padding-top: 8px;
   padding-bottom: 24px;
-  /* color: #333333; */
 }
 
 .story-container{
@@ -282,7 +281,7 @@ li a{
   padding: 16px
 }
 
-.booking-page{
+.booking{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -354,9 +353,13 @@ input[type=checkbox] {
   gap: 20px;
 }
 
+.confirmation-label{
+  font-weight: 700;
+}
 
-
-
+.user-comments{
+  font-style: italic;
+}
 
 .footer-container{
   display: grid;
