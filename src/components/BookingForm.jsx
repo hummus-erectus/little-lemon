@@ -24,21 +24,22 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
     useEffect(() => {
         const isValid = validate()
         setValid(isValid)
+        // eslint-disable-next-line
     }, [date, time, firstName, lastName, email, guests])
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const formData = {
-            // firstName,
-            // lastName,
-            // email,
-            // tel,
+            firstName,
+            lastName,
+            email,
+            tel,
             date,
             time,
             guests,
             occasion,
-            // confirm,
-            // comments,
+            confirm,
+            comments,
         }
         submitForm(formData)
     }
@@ -105,7 +106,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                             type="text"
                             id="firstName"
                             required
-                            aria-autocomplete="on"
+                            aria-autocomplete="inline"
                             minLength={1}
                             maxLength={30}
                             value={firstName}
@@ -119,7 +120,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                             type="text"
                             id="lastName"
                             required
-                            aria-autocomplete="on"
+                            aria-autocomplete="inline"
                             minLength={1}
                             maxLength={30}
                             value={lastName}
@@ -135,7 +136,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                         id="email"
                         value={email}
                         required
-                        aria-autocomplete="on"
+                        aria-autocomplete="inline"
                         maxLength={200}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -158,7 +159,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                     <input
                         type="tel"
                         id="tel"
-                        aria-autocomplete="on"
+                        aria-autocomplete="inline"
                         value={tel}
                         minLength={10}
                         maxLength={25}

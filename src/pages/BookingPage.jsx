@@ -1,6 +1,7 @@
-import { useReducer } from "react"
+import { useReducer, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { fetchAPI, submitAPI } from "../components/api"
+import BookingContext from "../components/BookingContext"
 import interior from "../assets/interior.webp"
 
 import BookingForm from "../components/BookingForm"
@@ -27,11 +28,14 @@ function BookingPage() {
 
     const navigate = useNavigate()
 
-    const submitForm = (formData) => {
-        console.log(formData)
-        if (submitAPI(formData) === true) {
+    const { updateBookingData } = useContext(BookingContext)
+
+    const submitForm = (data) => {
+        console.log(data)
+        updateBookingData(data)
+        if (submitAPI(data) === true) {
             navigate('/confirmation');
-          }
+        }
     }
 
     return (
