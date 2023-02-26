@@ -105,6 +105,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                             type="text"
                             id="firstName"
                             required
+                            aria-autocomplete="on"
                             minLength={1}
                             maxLength={30}
                             value={firstName}
@@ -118,6 +119,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                             type="text"
                             id="lastName"
                             required
+                            aria-autocomplete="on"
                             minLength={1}
                             maxLength={30}
                             value={lastName}
@@ -133,6 +135,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                         id="email"
                         value={email}
                         required
+                        aria-autocomplete="on"
                         maxLength={200}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -155,6 +158,7 @@ function BookingForm({availableTimes, updateTimes, submitForm}) {
                     <input
                         type="tel"
                         id="tel"
+                        aria-autocomplete="on"
                         value={tel}
                         minLength={10}
                         maxLength={25}
