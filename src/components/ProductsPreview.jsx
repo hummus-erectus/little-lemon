@@ -11,6 +11,10 @@ function ProductsPreview() {
             .catch(e => console.log(e))
     }, [])
 
+    const onAddProduct = (product) => {
+        console.log(product)
+    }
+
     return (
         <section>
             <div className="container products-container">
@@ -18,7 +22,7 @@ function ProductsPreview() {
                 {
                     products.length > 0 && products.map((product, index) => {
                         return (
-                            <ProductPreviewCard key={index} product={product}></ProductPreviewCard>
+                            <ProductPreviewCard key={index} product={product} onAddProduct={onAddProduct}></ProductPreviewCard>
                         )
                     })
                 }

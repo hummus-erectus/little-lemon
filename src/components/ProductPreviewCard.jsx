@@ -1,4 +1,11 @@
-function ProductPreviewCard({ product, special }) {
+import AddProduct from "./AddProduct"
+
+function ProductPreviewCard({ product, special, onAddProduct }) {
+
+    const addProduct = () => {
+        //TODO: Create after setting up redux state for cart to add product
+    }
+
     return (
             <div key={product.id} className="special-card">
                 <img className="card-img" src={special || product.special ? product.src : "/images/salad.jpg"} alt={product.name}></img>
@@ -8,7 +15,7 @@ function ProductPreviewCard({ product, special }) {
                         <p>${product.price}</p>
                     </div>
                     <p>{product.description}</p>
-                    {special && <button>Order a delivery</button>}
+                    <AddProduct onAddProduct={addProduct}/>
                 </div>
             </div>
 
