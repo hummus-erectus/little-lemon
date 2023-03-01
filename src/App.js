@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage"
 import BookingPage from "./pages/BookingPage"
 import BookingConfirmation from "./pages/BookingConfirmation"
 import Menu from "./pages/Menu"
+import OrderOnline from "./pages/OrderOnline"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import PaymentSuccess from "./pages/PaymentSuccess"
@@ -22,6 +23,7 @@ function App() {
             <Route path="/booking" element={<BookingPage />}/>
             <Route path="/confirmation" element={<BookingConfirmation />}/>
             <Route path="/menu" element={<Menu />}/>
+            <Route path="/order" element={<OrderOnline />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />}/>
             <Route path="/payment-success" element={<PaymentSuccess />}/>

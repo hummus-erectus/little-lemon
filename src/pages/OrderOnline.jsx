@@ -1,6 +1,6 @@
 import ProductsPreview from "../components/ProductsPreview"
 
-function Menu() {
+function OrderOnline() {
     return (
         <>
             <ProductsPreview />
@@ -8,4 +8,4 @@ function Menu() {
     )
 }
 
-export default Menu
+export default OrderOnline
