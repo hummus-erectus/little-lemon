@@ -185,19 +185,17 @@ li a{
   color: #333333;
 }
 
-.card-container{
+.react-multi-carousel-track li{
   display: grid;
-  grid-template-columns: 1fr;
-  margin: 0 auto;
-  gap: 20px;
-  max-width: 350px;
 }
 
-.special-card{
+.preview-card{
   border-radius: 16px;
   background-color: #EDEFEE;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  margin-inline: 8px;
 }
 
 .card-img{

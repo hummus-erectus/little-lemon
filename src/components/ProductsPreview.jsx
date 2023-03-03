@@ -3,9 +3,11 @@ import ProductPreviewCard from "./ProductPreviewCard"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../stores/cart/cartSlice"
 
+
 function ProductsPreview() {
     const [products, setProducts] = useState([])
     const dispatch = useDispatch()
+
 
     useEffect(() => {
         fetch('http://localhost:8080/api/products')

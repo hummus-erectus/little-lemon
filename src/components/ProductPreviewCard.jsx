@@ -7,7 +7,7 @@ function ProductPreviewCard({ product, special, onAddProduct }) {
     }
 
     return (
-            <div key={product.id} className="special-card">
+            <div key={product.id} className="preview-card">
                 <img className="card-img" src={special || product.special ? product.src : "/images/salad.jpg"} alt={product.name}></img>
                 <div className="card-details">
                     <div className="card-header">

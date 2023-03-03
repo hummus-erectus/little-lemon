@@ -1,20 +1,61 @@
-import specialsData from "./specialsData"
+import { useState, useEffect } from "react"
 import ProductPreviewCard from "./ProductPreviewCard"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../stores/cart/cartSlice"
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 function Specials() {
+
+    const [products, setProducts] = useState([])
+    const dispatch = useDispatch()
+
+    const responsive = {
+        wide: {
+          breakpoint: { max: 4000, min: 1140 },
+          items: 4
+        },
+        desktop: {
+          breakpoint: { max: 1139, min: 800 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 799, min: 576 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 575, min: 0 },
+          items: 1
+        }
+    }
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/products')
+            .then(response => response.json())
+            .then(data => setProducts(data.data))
+            .catch(e => console.log(e))
+    }, [])
+
+    const onAddProduct = (product) => {
+        dispatch(addToCart(product))
+    }
+
+
     return (
         <section>
             <div className="container specials-container">
                 <h2>Specials</h2>
-                <div className="card-container">
+                <Carousel responsive={responsive}>
                     {
-                        specialsData.length > 0 && specialsData.map((product, index) => {
+                        products.length > 0 && products.map((product, index) => {
                             return (
-                                <ProductPreviewCard key={index} product={product} special={true}></ProductPreviewCard>
+                                <div key={index} className="card-container">
+                                    <ProductPreviewCard product={product}></ProductPreviewCard>
+                                </div>
                             )
                         })
                     }
-                </div>
+                </Carousel>
             </div>
         </section>
     )
