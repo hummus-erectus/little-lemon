@@ -362,6 +362,7 @@ input[type=checkbox] {
 .footer-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-bottom: 16px;
 }
 
 .image-container{
