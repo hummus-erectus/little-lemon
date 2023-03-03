@@ -60,6 +60,22 @@ a {
 
 .navbar-cart {
   padding: 12px;
+  padding-top: 8px;
+}
+
+.cart-count {
+  color: #495E57;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  position: absolute;
+  top: 13px;
+  min-width: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
 }
 
 

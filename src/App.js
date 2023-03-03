@@ -11,13 +11,17 @@ import PaymentSuccess from "./pages/PaymentSuccess"
 import NotFound from "./pages/NotFound"
 import Footer from './components/Footer'
 import BookingProvider from "./components/BookingProvider"
+import { useSelector } from "react-redux"
+import { cartProducts } from "./stores/cart/cartSlice"
 
 function App() {
+  const productsInCart = useSelector(cartProducts)
+
   return (
     <>
       <BookingProvider>
         <Router>
-          <Navbar />
+          <Navbar cartCount={productsInCart ? productsInCart.length : 0}/>
           <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/booking" element={<BookingPage />}/>

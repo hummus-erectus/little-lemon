@@ -5,7 +5,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import logo from "../assets/logo.svg"
 import cart from "../assets/cart.svg"
 
-function Navbar() {
+function Navbar({ cartCount }) {
     const [showNavbar, setShowNavbar] = useState(false)
     const navbarRef = useRef(null)
 
@@ -37,9 +37,9 @@ function Navbar() {
                 <Link to="/" className='navbar-img-container' onClick={() => setShowNavbar(false)}>
                     <img className="navbar-logo" src={logo} alt="Little Lemon logo"/>
                 </Link>
-                <Link to="/cart" className="navbar-img-container">
+                <Link to="/cart" className="navbar-img-container cart-container">
                         <img className="navbar-cart" src={cart} alt="cart"/>
-                        {/* {cartCount > 0 ? <div className="rounded-full bg-yellow-400 text-white inline-flex justify-center items-center w-full absolute -top-1 -right-1">{cartCount}</div> : null} */}
+                        {cartCount > 0 ? <div className="cart-count">{cartCount}</div> : null}
                 </Link>
                 <div className="menu-icon" onClick={handleShowNavbar}>
                     <FontAwesomeIcon icon={faBars} />
@@ -54,6 +54,8 @@ function Navbar() {
                         <li><Link to="/booking" onClick={() => setShowNavbar(false)}>Reservations</Link></li>
                         <li><Link to="/order" onClick={() => setShowNavbar(false)}>Order Online</Link></li>
                         <li><Link to="/login" onClick={() => setShowNavbar(false)}>Login</Link></li>
+                        <br/>
+                        <li><Link to="/cart" onClick={() => setShowNavbar(false)}>Cart</Link></li>
                     </ul>
                 </div>
                 {showNavbar && <div className="navbar-overlay" onClick={handleShowNavbar}></div>}
