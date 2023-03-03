@@ -5,7 +5,7 @@ function TabItem ({ title, index, active, setActive}) {
         <div className="tab-item">
             <button onClick={() => setActive(title)} className="tab-item-btn">
                 <span className={`tab-btn-text ${className}`}>
-                    {title.toUpperCase()}
+                    {title}
                 </span>
             </button>
         </div>

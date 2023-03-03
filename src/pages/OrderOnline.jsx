@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts, selectAllProducts } from "../stores/menu/productsSlice"
-// import { addToCart } from "../../stores/cart/cartSlice";
+import { addToCart } from "../stores/cart/cartSlice";
 import ProductDetailCard from "../components/ProductDetailCard"
 import Tabs from "../components/Tabs"
 
@@ -16,7 +16,7 @@ function OrderOnline() {
     }, [])
 
     const onAddProduct = (product) => {
-        // dispatch(addToCart(product))
+        dispatch(addToCart(product))
     }
 
     const onTabSwitch = (newActiveTab) => {
@@ -50,7 +50,7 @@ function OrderOnline() {
                         {
                             products.products && products.products[activeTabIndex].products.map((product, index) => {
                                 return (
-                                <ProductDetailCard key={index} product={product} />
+                                <ProductDetailCard key={index} product={product} onAddProduct={onAddProduct}/>
                                 )
                             })
                         }
