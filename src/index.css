@@ -78,6 +78,11 @@ a {
   padding: 0.25rem 0.5rem;
 }
 
+.dropdown-cart-count{
+  margin-left: 8px;
+  color: #F4CE14;
+}
+
 
 .menu-icon{
   display: flex;

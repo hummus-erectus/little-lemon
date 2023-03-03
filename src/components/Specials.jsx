@@ -50,7 +50,7 @@ function Specials() {
                         products.length > 0 && products.map((product, index) => {
                             return (
                                 <div key={index} className="card-container">
-                                    <ProductPreviewCard product={product}></ProductPreviewCard>
+                                    <ProductPreviewCard product={product} onAddProduct={onAddProduct}/>
                                 </div>
                             )
                         })

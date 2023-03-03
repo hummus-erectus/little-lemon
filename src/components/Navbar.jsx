@@ -54,8 +54,7 @@ function Navbar({ cartCount }) {
                         <li><Link to="/booking" onClick={() => setShowNavbar(false)}>Reservations</Link></li>
                         <li><Link to="/order" onClick={() => setShowNavbar(false)}>Order Online</Link></li>
                         <li><Link to="/login" onClick={() => setShowNavbar(false)}>Login</Link></li>
-                        <br/>
-                        <li><Link to="/cart" onClick={() => setShowNavbar(false)}>Cart</Link></li>
+                        {showNavbar && <><br/><li><Link to="/cart" onClick={() => setShowNavbar(false)}>Cart<span className="dropdown-cart-count">{cartCount}</span></Link></li></>}
                     </ul>
                 </div>
                 {showNavbar && <div className="navbar-overlay" onClick={handleShowNavbar}></div>}
