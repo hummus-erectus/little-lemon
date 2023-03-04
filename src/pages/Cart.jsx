@@ -4,6 +4,7 @@ import arrowRight from "../assets/arrowRight.svg"
 import { cartProducts } from "../stores/cart/cartSlice"
 import useTabSwitch from "../hooks/useTabSwitch"
 import AddressForm from "../components/AddressForm"
+import ProductsSummary from "../components/ProductsSummary"
 
 
 function Cart() {
@@ -25,7 +26,7 @@ function Cart() {
             <h1>Your cart</h1>
              <Tabs list={tabs} onTabSwitch={handleTabSwitch} activeTab={currentTab} />
             <div className={`tabs ${currentTab !== 'Summary' ? 'hidden' : ''}`}>
-                Summary
+                <ProductsSummary />
                 <div className="">
                     <button onClick={()=>handleTabSwitch('Delivery')}><span className="next-btn-text">Next</span><img className="next-btn-arrow" src={arrowRight} alt="Right Arrow"/></button>
                 </div>

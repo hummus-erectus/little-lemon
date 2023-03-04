@@ -9,16 +9,33 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            return { products: [...state.products, {...action.payload, amount: 1}] }
+            const product = action.payload
+            const existingProduct = state.products.find(p => p._id === product._id)
+            if (existingProduct) {
+              existingProduct.amount += 1
+            } else {
+              product.amount = 1
+              state.products.push(product)
+            }
         },
         clearCart: (state) => {
             return {products: []}
         },
         incrementProductAmount: (state, action) => {
-            return { products: state.products.map(product => product.id === action.payload.id ? {...product, amount: product.amount +1} : product)}
-        },
+            const { _id } = action.payload;
+            return {
+                products: state.products.map(product =>
+                    product._id === _id ? { ...product, amount: product.amount + 1 } : product
+                )
+            };
+          },
         decrementProductAmount: (state, action) => {
-            return { products: state.products.map(product => product.id === action.payload.id ? {...product, amount: product.amount -1} : product)}
+            const { _id } = action.payload;
+            return {
+                products: state.products.map(product =>
+                    product._id === _id ? { ...product, amount: product.amount - 1 } : product
+                )
+            };
         },
     }
 })

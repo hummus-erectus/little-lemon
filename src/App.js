@@ -14,15 +14,17 @@ import BookingProvider from "./components/BookingProvider"
 import Cart from "./pages/Cart"
 import { useSelector } from "react-redux"
 import { cartProducts } from "./stores/cart/cartSlice"
+import { sumBy } from "lodash"
 
 function App() {
   const productsInCart = useSelector(cartProducts)
+  const cartCount = sumBy(productsInCart, "amount")
 
   return (
     <>
       <BookingProvider>
         <Router>
-          <Navbar cartCount={productsInCart ? productsInCart.length : 0}/>
+          <Navbar cartCount={cartCount}/>
           <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/booking" element={<BookingPage />}/>

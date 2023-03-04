@@ -1,8 +1,12 @@
 import AddProduct from "./AddProduct"
 
 function ProductDetailCard ({ product, onAddProduct }) {
+    const addProduct = () => {
+        onAddProduct(product)
+    }
+
     return (
-            <div key={product.id} className="preview-card">
+            <div className="preview-card">
                 <img className="card-img" src={product.special ? product.src : "/images/salad.jpg"} alt={product.name}></img>
                 <div className="card-details">
                     <div className="card-header">
@@ -10,7 +14,7 @@ function ProductDetailCard ({ product, onAddProduct }) {
                         <p>${product.price}</p>
                     </div>
                     <p>{product.description}</p>
-                    <AddProduct onAddProduct={onAddProduct}/>
+                    <AddProduct onAddProduct={addProduct}/>
                 </div>
             </div>
 
