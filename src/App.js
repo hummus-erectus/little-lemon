@@ -11,6 +11,7 @@ import PaymentSuccess from "./pages/PaymentSuccess"
 import NotFound from "./pages/NotFound"
 import Footer from './components/Footer'
 import BookingProvider from "./components/BookingProvider"
+import Cart from "./pages/Cart"
 import { useSelector } from "react-redux"
 import { cartProducts } from "./stores/cart/cartSlice"
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/confirmation" element={<BookingConfirmation />}/>
             <Route path="/menu" element={<Menu />}/>
             <Route path="/order" element={<OrderOnline />}/>
+            <Route path="/cart" element={<Cart />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />}/>
             <Route path="/payment-success" element={<PaymentSuccess />}/>

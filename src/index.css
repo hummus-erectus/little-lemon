@@ -17,6 +17,7 @@ h1 {
 
 a {
   width: max-content;
+  text-decoration: none;
 }
 
 .container{
@@ -181,6 +182,8 @@ button{
   font-weight: 700;
   padding: 8px 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 button:active {
@@ -209,7 +212,6 @@ li{
 
 
 li a{
-  text-decoration: none;
   color: #333333;
 }
 
@@ -326,7 +328,7 @@ li a{
   font-size: 16px;
 }
 
-.booking-form{
+form{
   display: grid;
   width: 100%;
   max-width: 768px;
@@ -334,25 +336,29 @@ li a{
   margin-block: 16px;
 }
 
-.booking-form label {
+form button{
+  width: min-content;
+}
+
+form label {
   font-size: 18px;
   font-weight: 700;
   display: block;
 }
 
-.booking-form input, .booking-form select{
+form input, form select{
   width: 100%;
   box-sizing: border-box;
   height: 22px;
 }
 
-.booking-form textarea{
+form textarea{
   width: 100%;
   box-sizing: border-box;
   resize: none;
 }
 
-.booking-form .guest-label{
+form .guest-label{
   display: inline;
 }
 
@@ -373,7 +379,7 @@ input[type=checkbox] {
   margin-left: 8px;
 }
 
-.date-and-time, .full-name{
+.date-and-time, .full-name, .city-state{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -385,6 +391,10 @@ input[type=checkbox] {
 
 .user-comments{
   font-style: italic;
+}
+
+.label-optional{
+  font-weight: 500;
 }
 
 
@@ -441,7 +451,17 @@ input[type=checkbox] {
   margin-inline: 0.75rem;
 }
 
+.tabs{
+  margin-top: 2rem;
+}
 
+.hidden{
+  display: none;
+}
+
+.next-btn-text{
+  margin-right: 8px;
+}
 
 
 
