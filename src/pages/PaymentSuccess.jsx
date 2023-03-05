@@ -1,6 +1,6 @@
 function PaymentSuccess() {
     return (
-        <div>PaymentSuccess</div>
+        <div>Your payment was successful</div>
     )
 }
 

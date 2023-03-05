@@ -117,58 +117,6 @@ function AddressForm({ onTabSwitch }) {
                     </div>
                 </div> */}
 
-                {/* <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        required
-                        aria-autocomplete="inline"
-                        maxLength={200}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-
-                <div>
-                    <label className="checkbox-label">
-                        Email confirmation of my booking
-                        <input
-                            type="checkbox"
-                            id="confirm"
-                            value={confirm}
-                            onChange={(e) => setConfirm(e.target.value)}
-                        />
-                    </label>
-                </div>
-
-                <div>
-                    <label htmlFor="occasion">Occasion</label>
-                    <select
-                        id="occasion"
-                        value={occasion}
-                        onChange={(event) => setOccasion(event.target.value)}
-                        required
-                    >
-                        <option>None</option>
-                        <option>Birthday</option>
-                        <option>Anniversary</option>
-                        <option>Work Party</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label htmlFor="comments">Additional Comments</label>
-                        <textarea
-                            id="comments"
-                            rows={8}
-                            maxLength={280}
-                            value={comments}
-                            onChange={(e) => setComments(e.target.value)}
-                    />
-                </div> */}
-
                 <button type="submit"
                 // disabled={!valid}
                 >

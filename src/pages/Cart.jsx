@@ -5,6 +5,7 @@ import { cartProducts } from "../stores/cart/cartSlice"
 import useTabSwitch from "../hooks/useTabSwitch"
 import AddressForm from "../components/AddressForm"
 import ProductsSummary from "../components/ProductsSummary"
+import { StripeWrapper } from "../components/PaymentForm"
 
 
 function Cart() {
@@ -35,7 +36,7 @@ function Cart() {
                 <AddressForm onTabSwitch={handleTabSwitch}/>
             </div>
             <div className={`tabs ${currentTab !== 'Payment' ? 'hidden' : ''}`}>
-                Payment Form
+                <StripeWrapper />
             </div>
         </main>
     )
