@@ -14,8 +14,8 @@ export const cartSlice = createSlice({
             if (existingProduct) {
               existingProduct.amount += 1
             } else {
-              product.amount = 1
-              state.products.push(product)
+                const newProduct = { ...product, amount: 1 };
+                state.products.push(newProduct)
             }
         },
         clearCart: (state) => {
