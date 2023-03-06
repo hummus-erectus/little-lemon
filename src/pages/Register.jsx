@@ -23,12 +23,12 @@ function Register() {
             password,
         }
 
-        let uid = '';
-        const authentication = getAuth();
+        let uid = ''
+        const authentication = getAuth()
         createUserWithEmailAndPassword(authentication, data.email, data.password)
             .then((response) => {
                 uid = response.user.uid;
-                sessionStorage.setItem('User Id', uid);
+                sessionStorage.setItem('User Id', uid)
                 sessionStorage.setItem('Auth token', response._tokenResponse.refreshToken)
                 window.dispatchEvent(new Event("storage"))
             })
@@ -49,7 +49,7 @@ function Register() {
                 })
             }).then((response) => {
                 if (response.status === 200) {
-                    setLoading(false);
+                    setLoading(false)
                     toast.success('Account created successfully!🎉', {
                         position: "top-right",
                         autoClose: 5000,
@@ -58,15 +58,14 @@ function Register() {
                         pauseOnHover: true,
                         draggable: true,
                         progress: undefined,
-                        theme: 'dark'
-                        });
-                        console.log('success!!!!!')
-                    // navigate('/')
+                        theme: 'dark',
+                        onClose: () => navigate('/')
+                        })
                 } else {
-                    console.log(response.json());
+                    console.log(response.json())
                 }
             }).catch((error) => {
-                setLoading(false);
+                setLoading(false)
                 console.log(error)
             })
     }
