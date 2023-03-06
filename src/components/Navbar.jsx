@@ -1,11 +1,39 @@
 import { useState, useEffect, useRef } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import logo from "../assets/logo.svg"
 import cart from "../assets/cart.svg"
 
 function Navbar({ cartCount }) {
+
+    const navigate = useNavigate()
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('Auth token')
+        sessionStorage.removeItem('User Id')
+        window.dispatchEvent(new Event("storage"))
+        navigate("/")
+    }
+
+    useEffect(() => {
+        const checkAuthToken = () => {
+            const token = sessionStorage.getItem('Auth token')
+            if (token) {
+                setIsLoggedIn(true)
+            } else {
+                setIsLoggedIn(false)
+            }
+        }
+
+        window.addEventListener('storage', checkAuthToken)
+
+        return () => {
+            window.removeEventListener('storage', checkAuthToken)
+        }
+    }, [])
+
     const [showNavbar, setShowNavbar] = useState(false)
     const navbarRef = useRef(null)
 
@@ -53,7 +81,18 @@ function Navbar({ cartCount }) {
                         <li><Link to="/menu" onClick={() => setShowNavbar(false)}>Menu</Link></li>
                         <li><Link to="/booking" onClick={() => setShowNavbar(false)}>Reservations</Link></li>
                         <li><Link to="/order" onClick={() => setShowNavbar(false)}>Order Online</Link></li>
-                        <li><Link to="/login" onClick={() => setShowNavbar(false)}>Login</Link></li>
+                        {
+                            isLoggedIn ?
+                            <button onClick={handleLogout}>Log Out</button>
+                            :
+                            (
+                                <>
+                                    <li><Link to="/register" onClick={() => setShowNavbar(false)}>Register</Link></li>
+                                    <li><Link to="/login" onClick={() => setShowNavbar(false)}>Login</Link></li>
+                                </>
+                            )
+                        }
+
                         {showNavbar && <><br/><li><Link to="/cart" onClick={() => setShowNavbar(false)}>Cart<span className="dropdown-cart-count">{cartCount}</span></Link></li></>}
                     </ul>
                 </div>
