@@ -7,6 +7,7 @@ const db = require('./db')
 const app = express()
 const productRouter = require('./routes/productRouter')
 const userRouter = require('./routes/userRouter')
+const orderRouter = require('./routes/orderRouter')
 
 const Order = require('./models/orderModel')
 
@@ -97,11 +98,12 @@ app.listen(PORT, () => {
 })
 app.use('/api/', productRouter)
 app.use('/api/', userRouter)
+app.use('/api/', orderRouter)
 
 
 app.post('/create-payment-intent', async(req, res) => {
     try {
-        const { orderItems, shippingAddress, userId } = req.body
+        const { orderItems, shippingAddress, userID } = req.body
         console.log(shippingAddress)
 
         const totalPrice = calculateOrderAmount(orderItems)
@@ -116,10 +118,10 @@ app.post('/create-payment-intent', async(req, res) => {
             totalPrice,
             taxPrice,
             shippingPrice,
-            user: ''
+            userID
         })
 
-        // await order.save()
+        console.log(order)
 
         const paymentIntent = await stripe.paymentIntents.create({
             amount: totalPrice,

@@ -27,51 +27,69 @@ function PaymentForm() {
     const stripe = useStripe()
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-
+        e.preventDefault();
+      
         if (!stripe || !elements || !cart?.length || !address) {
-            return
+          return;
         }
-
-        setLoading(true)
+      
+        setLoading(true);
+      
         try {
-            const { error: backEndError, clientSecret } = await fetch('http://localhost:8080/create-payment-intent', {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    paymentMethodType: 'card',
-                    orderItems: cart,
-                    userId: '',
-                    shippingAddress: address
-                })
-            }).then(r => r.json())
+          const { error: backEndError, clientSecret } = await fetch('http://localhost:8080/create-payment-intent', {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+              paymentMethodType: 'card',
+              orderItems: cart,
+            //   userId: '',
+              shippingAddress: address,
+            }),
+          }).then((r) => r.json());
+      
+          console.log('clientSecret:', clientSecret);
+      
+          const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+              card: elements.getElement(CardElement),
+            },
+          });
+      
+          if (backEndError || stripeError) {
+            setError(backEndError || stripeError);
+            alert('There was a problem processing your payment.');
+          } else if (paymentIntent.status === 'succeeded') {
+            const { error: orderError } = await fetch('http://localhost:8080/api/create-order', {
+              method: 'POST',
+              headers: {
+                'Content-type': 'application/json',
+              },
+              body: JSON.stringify({
 
-            console.log('clientSecret:', clientSecret)
-
-            const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(
-                clientSecret, {
-                    payment_method: {
-                        card: elements.getElement(CardElement)
-                    }
-                }
-            )
-            if (backEndError || stripeError) {
-                setError(backEndError || stripeError)
-                alert("There was a problem processing your payment.")
-            } else if (paymentIntent.status === 'succeeded') {
-                dispatch(clearAddress())
-                dispatch(clearCart())
-                navigate('/payment-success')
+                orderItems: cart,
+                shippingAddress: address,
+                total: cart.reduce((acc, curr) => acc + curr.price * curr.amount, 0),
+              }),
+            }).then((r) => r.json());
+      
+            if (orderError) {
+              setError(orderError);
+              console.log(error)
+              alert('There was a problem creating your order.');
+            } else {
+              dispatch(clearAddress());
+              dispatch(clearCart());
+              navigate('/payment-success');
             }
-
-        } catch(err) {
-            console.log(err)
+          }
+        } catch (err) {
+          console.log(err);
         }
-
-        setLoading(false)
-    }
+      
+        setLoading(false);
+      };
 
 
     return (

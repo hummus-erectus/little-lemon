@@ -8,28 +8,28 @@ const orderSchema = mongoose.Schema(
       },
       orderItems: [
         {
-          name: { type: String, required: true },
-          amount: { type: Number, required: true },
-          imageUrl: { type: String, required: true },
-          price: { type: Number, required: true },
+          name: { type: String, required: false },
+          amount: { type: Number, required: false },
+          imageUrl: { type: String, required: false },
+          price: { type: Number, required: false },
           product: {
             type: mongoose.Schema.Types.ObjectId,
-            required: true,
+            required: false,
             ref: "Product",
           },
         },
       ],
       shippingAddress: {
-        address: { type: String, required: true },
-        city: { type: String, required: true },
+        street: { type: String, required: false },
+        city: { type: String, required: false },
         tel: { type: String },
 
-        // postalCode: { type: String, required: true },
-        // country: { type: String, required: true },
+        // postalCode: { type: String, required: false },
+        // country: { type: String, required: false },
       },
       paymentMethod: {
         type: String,
-        required: true,
+        required: false,
       },
       paymentResult: {
         id: { type: String },
@@ -39,22 +39,22 @@ const orderSchema = mongoose.Schema(
       },
       taxPrice: {
         type: Number,
-        required: true,
+        required: false,
         default: 0.0,
       },
       shippingPrice: {
         type: Number,
-        required: true,
+        required: false,
         default: 0.0,
       },
       totalPrice: {
         type: Number,
-        required: true,
+        required: false,
         default: 0.0,
       },
       isPaid: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false,
       },
       paidAt: {
@@ -62,7 +62,7 @@ const orderSchema = mongoose.Schema(
       },
       isDelivered: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false,
       },
       deliveredAt: {
@@ -70,7 +70,7 @@ const orderSchema = mongoose.Schema(
       },
     },
     {
-      timestamps: true,
+      timestamps: false,
     }
   )
 
