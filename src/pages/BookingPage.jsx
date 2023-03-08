@@ -39,7 +39,7 @@ function BookingPage() {
     }
 
     return (
-        <main className="container booking booking-page">
+        <main className="container centered booking-page">
             <img src={interior} alt="Little Lemon Interior" className="booking-img" />
             <h1>Reserve a Table</h1>
             <p>Whatever the occasion, you and your party will always feel welcome at Little Lemon.</p>

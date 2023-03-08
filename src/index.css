@@ -309,7 +309,7 @@ li a{
   padding: 16px
 }
 
-.booking{
+.centered{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -317,15 +317,20 @@ li a{
 
 .booking-img{
   width: 100vw;
+  max-width: 768px;
 }
 
-.booking-page h1{
+.centered h1{
   font-size: 36px;
   font-weight: 400;
 }
 
-.booking-page p{
+.centered p{
   font-size: 16px;
+}
+
+.order-link-btn{
+padding-bottom: 32px;
 }
 
 form{
@@ -397,7 +402,11 @@ input[type=checkbox] {
   font-weight: 500;
 }
 
-
+.empty-cart-img{
+  width: 60vw;
+  padding: 32px;
+  max-width: 525px;
+}
 
 
 .tabs-wrapper{
@@ -696,10 +705,6 @@ footer h3{
     font-size: 20px;
   }
 
-  .booking-img{
-    max-width: 768px;
-
-  }
 }
 
 @media(min-width: 980px){

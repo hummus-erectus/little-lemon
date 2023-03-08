@@ -6,6 +6,8 @@ import useTabSwitch from "../hooks/useTabSwitch"
 import AddressForm from "../components/AddressForm"
 import ProductsSummary from "../components/ProductsSummary"
 import { StripeWrapper } from "../components/PaymentForm"
+import { Link } from "react-router-dom"
+import emptybasket from "../assets/emptybasket.webp"
 
 
 function Cart() {
@@ -16,9 +18,15 @@ function Cart() {
 
     if (!cart || cart.length === 0) {
         return (
-            <div>
+            <main className="container centered empty-cart">
+                <img src={emptybasket} alt="Empty basket" className="empty-cart-img" />
                 <h1>Your cart is empty</h1>
-            </div>
+                <Link to="/order" className="order-link-btn">
+                    <button>
+                        Check out our online delivery menu here
+                        </button>
+                    </Link>
+            </main>
         )
     }
 
