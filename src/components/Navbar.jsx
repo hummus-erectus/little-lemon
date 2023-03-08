@@ -81,9 +81,10 @@ function Navbar({ cartCount }) {
                         <li><Link to="/menu" onClick={() => setShowNavbar(false)}>Menu</Link></li>
                         <li><Link to="/booking" onClick={() => setShowNavbar(false)}>Reservations</Link></li>
                         <li><Link to="/order" onClick={() => setShowNavbar(false)}>Order Online</Link></li>
+                        {showNavbar && <br/>}
                         {
                             isLoggedIn ?
-                            <button onClick={handleLogout}>Log Out</button>
+                            <li onClick={handleLogout}>Log Out</li>
                             :
                             (
                                 <>

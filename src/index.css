@@ -116,7 +116,7 @@ a {
   background-color: #495E57;
 }
 
-.nav-elements li a {
+.nav-elements li, .nav-elements li a {
   color: #EDEFEE;
 }
 
