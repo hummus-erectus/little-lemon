@@ -3,7 +3,6 @@ import Navbar from './components/Navbar'
 import HomePage from "./pages/HomePage"
 import BookingPage from "./pages/BookingPage"
 import BookingConfirmation from "./pages/BookingConfirmation"
-import Menu from "./pages/Menu"
 import OrderOnline from "./pages/OrderOnline"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
@@ -29,8 +28,7 @@ function App() {
             <Route path="/" element={<HomePage />}/>
             <Route path="/booking" element={<BookingPage />}/>
             <Route path="/confirmation" element={<BookingConfirmation />}/>
-            <Route path="/menu" element={<Menu />}/>
-            <Route path="/order" element={<OrderOnline />}/>
+            <Route path="/menu" element={<OrderOnline />}/>
             <Route path="/cart" element={<Cart />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />}/>

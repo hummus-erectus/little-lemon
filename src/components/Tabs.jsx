@@ -1,7 +1,7 @@
 import { useState } from "react"
 import TabItem from "./TabItem"
 
-function Tabs ({ list, activeTab, onTabSwitch}) {
+function Tabs ({ list, activeTab, onTabSwitch, type }) {
     let active = activeTab === '' ? list[0] : activeTab
     console.log(active)
     return (
@@ -16,6 +16,7 @@ function Tabs ({ list, activeTab, onTabSwitch}) {
                             active={active === item}
                             setActive={onTabSwitch}
                             imgSrc={`${process.env.PUBLIC_URL}\\images\\${item}.jpg`}
+                            type={type}
                             />
                     )
                 })}

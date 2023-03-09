@@ -21,7 +21,7 @@ function Cart() {
             <main className="container centered empty-cart">
                 <img src={emptybasket} alt="Empty basket" className="empty-cart-img" />
                 <h1>Your cart is empty</h1>
-                <Link to="/order" className="order-link-btn">
+                <Link to="/menu" className="order-link-btn">
                     <button>
                         Check out our online delivery menu here
                         </button>
@@ -31,19 +31,19 @@ function Cart() {
     }
 
     return (
-        <main className="container">
+        <main className="container cart-container">
             <h1>Your cart</h1>
-             <Tabs list={tabs} onTabSwitch={handleTabSwitch} activeTab={currentTab} />
-            <div className={`tabs ${currentTab !== 'Summary' ? 'hidden' : ''}`}>
+             <Tabs list={tabs} onTabSwitch={handleTabSwitch} activeTab={currentTab} type="cart" />
+            <div className={`cart-tab tabs ${currentTab !== 'Summary' ? 'hidden' : ''}`}>
                 <ProductsSummary />
                 <div className="">
-                    <button onClick={()=>handleTabSwitch('Delivery')}><span className="next-btn-text">Next</span><img className="next-btn-arrow" src={arrowRight} alt="Right Arrow"/></button>
+                    <button className="summary-btn" onClick={()=>handleTabSwitch('Delivery')}><span className="next-btn-text">Next</span><img className="next-btn-arrow" src={arrowRight} alt="Right Arrow"/></button>
                 </div>
             </div>
-            <div className={`tabs ${currentTab !== 'Delivery' ? 'hidden' : ''}`}>
+            <div className={`cart-tab tabs ${currentTab !== 'Delivery' ? 'hidden' : ''}`}>
                 <AddressForm onTabSwitch={handleTabSwitch}/>
             </div>
-            <div className={`tabs ${currentTab !== 'Payment' ? 'hidden' : ''}`}>
+            <div className={`cart-tab tabs ${currentTab !== 'Payment' ? 'hidden' : ''}`}>
                 <StripeWrapper />
             </div>
         </main>

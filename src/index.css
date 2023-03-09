@@ -345,8 +345,12 @@ form{
   margin-block: 16px;
 }
 
+.address-form{
+  margin-block: 0;
+}
+
 form button{
-  width: min-content;
+  width: fit-content;
 }
 
 form label {
@@ -412,9 +416,7 @@ input[type=checkbox] {
   max-width: 525px;
 }
 
-
-
-.order-online-container h1{
+.order-online-container h1, .cart-container h1{
   position: sticky;
   top: 56px;
   z-index: 50;
@@ -537,6 +539,10 @@ input[type=checkbox] {
   margin-top: 2rem;
 }
 
+.cart-tab{
+  margin-top: 0;
+}
+
 .hidden{
   display: none;
 }
@@ -614,6 +620,10 @@ input[type=checkbox] {
 .product-quantity span {
   margin: 0 0.5rem;
   font-size: 1.25rem;
+}
+
+.summary-btn{
+  margin-block: 16px;
 }
 
 
