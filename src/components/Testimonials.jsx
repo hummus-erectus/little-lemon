@@ -10,7 +10,7 @@ function Testimonials() {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length)
             }, 8000)
             return () => clearInterval(interval);
-    }, [testimonialsData.length]);
+    }, []);
 
     return (
         <section className="testimonials-section">
