@@ -11,6 +11,10 @@ body {
   font-family: 'Karla', sans-serif;
 }
 
+main{
+  min-height: calc(100vh - 396px)
+}
+
 h1 {
   font-family: 'Markazi Text', serif;
 }
@@ -484,6 +488,8 @@ input[type=checkbox] {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 
 .detail-card{
@@ -494,6 +500,9 @@ input[type=checkbox] {
 
 .detail-card hr{
   color: #333333;
+}
+.order-detail-cards-container hr:last-child{
+  display: none;
 }
 
 .detail-card-img{
@@ -690,6 +699,10 @@ footer h3{
 }
 
 @media(min-width: 768px){
+  main{
+    min-height: calc(100vh - 294px)
+  }
+
   .footer-container{
     grid-template-columns: repeat(4, 1fr);
   }

@@ -5,12 +5,12 @@ import Testimonials from "../components/Testimonials"
 
 function HomePage() {
     return (
-        <>
+        <main>
             <CTA />
             <Specials />
             <Testimonials />
             <About />
-        </>
+        </main>
     )
 }
 
