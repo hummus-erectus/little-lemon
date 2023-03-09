@@ -333,6 +333,14 @@ li a{
   font-size: 16px;
 }
 
+.confirmation-container{
+  margin: 16px;
+}
+
+.payment-success-page p, .payment-success-page h1{
+  margin-bottom: 16px;
+}
+
 .order-link-btn{
 padding-bottom: 32px;
 }

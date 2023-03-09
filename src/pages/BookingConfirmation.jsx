@@ -7,12 +7,12 @@ function BookingConfirmation() {
     console.log(formData)
 
     return (
-        <main className="container booking confirmation-page">
+        <main className="container centered confirmation-page">
             <img src={interior2} alt="Little Lemon Interior" className="booking-img" />
             <h1>Success!</h1>
             <p>Your table has been booked. We look forward to welcoming you.</p>
             {formData && (
-                <div className="booking-form">
+                <div className="confirmation-container">
                     <div className="date-and-time">
                         <p><span className="confirmation-label">Date:</span> {formData.date}</p>
                         <p><span className="confirmation-label">Time:</span> {formData.time}</p>
