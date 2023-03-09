@@ -15,6 +15,7 @@ function Tabs ({ list, activeTab, onTabSwitch}) {
                             index={index}
                             active={active === item}
                             setActive={onTabSwitch}
+                            imgSrc={`${process.env.PUBLIC_URL}\\images\\${item}.jpg`}
                             />
                     )
                 })}
