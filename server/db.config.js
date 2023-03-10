@@ -1,6 +1,4 @@
-const dbName = 'food-ordering';
-const dbHost = 'localhost';
-const dbPort = 27017;
+const dbConnectionString = process.env.MONGO_URI;
 module.exports = {
-    url: `mongodb://${dbHost}:${dbPort}/${dbName}`
+    url: dbConnectionString
 }

@@ -1,11 +1,14 @@
-const mongoose = require('mongoose')
+require('dotenv').config({path: '../.env'})
+const mongoose = require('mongoose');
+const mongoDB = process.env.MONGO_URI;
 
-mongoose
-    .connect('mongodb://localhost:27017/food-ordering', { useNewUrlParser: true })
-    .catch(e => {
-        console.error('Connection error', e.message)
-    })
+console.log('MONGO_URI:', process.env.MONGO_URI);
 
-const db = mongoose.connection
+mongoose.connect(mongoDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: "true"
+});
+
+const db = mongoose.connection;
 
 module.exports = db

@@ -11,7 +11,7 @@ const orderRouter = require('./routes/orderRouter')
 
 const Order = require('./models/orderModel')
 
-const env = require('dotenv').config({path: '../.env'})
+require('dotenv').config({path: '../.env'})
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
@@ -86,7 +86,8 @@ app.post('/webhook', async (req, res) => {
     res.sendStatus(200);
   });
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+  db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+  db.once('open', () => console.log('MongoDB connected successfully!'))
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to Food Ordering"})
