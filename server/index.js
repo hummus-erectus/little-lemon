@@ -11,7 +11,7 @@ const orderRouter = require('./routes/orderRouter')
 
 const Order = require('./models/orderModel')
 
-require('dotenv').config({path: '/.env'})
+require('dotenv').config({path: './.env'})
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
