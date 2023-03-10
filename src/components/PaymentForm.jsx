@@ -36,7 +36,7 @@ function PaymentForm() {
         setLoading(true);
       
         try {
-          const { error: backEndError, clientSecret } = await fetch('http://localhost:8080/create-payment-intent', {
+          const { error: backEndError, clientSecret } = await fetch('https://little-lemon.onrender.com/create-payment-intent', {
             method: 'POST',
             headers: {
               'Content-type': 'application/json',
@@ -61,7 +61,7 @@ function PaymentForm() {
             setError(backEndError || stripeError);
             alert('There was a problem processing your payment.');
           } else if (paymentIntent.status === 'succeeded') {
-            const { error: orderError } = await fetch('http://localhost:8080/api/create-order', {
+            const { error: orderError } = await fetch('https://little-lemon.onrender.com/api/create-order', {
               method: 'POST',
               headers: {
                 'Content-type': 'application/json',

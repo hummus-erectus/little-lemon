@@ -38,7 +38,7 @@ function Register() {
                 }
             })
 
-            fetch('http://localhost:8080/api/create-user', {
+            fetch('https://little-lemon.onrender.com/api/create-user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

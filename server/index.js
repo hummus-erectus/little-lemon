@@ -16,7 +16,7 @@ require('dotenv').config({path: './.env'})
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 const corsOptions = {
-    origin: "http://localhost:3000"
+    origin: "https://little-lemon-vegan-restaurant.netlify.app/"
 }
 
 const calculateOrderAmount = (orderItems) => {
