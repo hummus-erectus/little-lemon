@@ -72,7 +72,7 @@ function Register() {
 
 
     return (
-        <main className="container register-page">
+        <main className="container register-page centered">
             {/* <img src={interior} alt="Little Lemon Interior" className="booking-img" /> */}
             <h1>Register</h1>
             <form className="register-form" onSubmit={handleSubmit}>

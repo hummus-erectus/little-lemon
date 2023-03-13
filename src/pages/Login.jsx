@@ -55,7 +55,7 @@ function Login() {
 
 
     return (
-        <main className="container register-page">
+        <main className="container login-page centered">
             {/* <img src={interior} alt="Little Lemon Interior" className="booking-img" /> */}
             <h1>Login</h1>
             <form className="login-form" onSubmit={handleSubmit}>
