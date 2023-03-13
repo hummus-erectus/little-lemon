@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { useEffect } from "react"
 import Navbar from './components/Navbar'
 import HomePage from "./pages/HomePage"
 import BookingPage from "./pages/BookingPage"
@@ -19,10 +20,23 @@ function App() {
   const productsInCart = useSelector(cartProducts)
   const cartCount = sumBy(productsInCart, "amount")
 
+  function ScrollToTop() {
+    const { pathname } = useLocation()
+    useEffect(() => {
+      document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+      //   behavior: "instant",
+      })
+    }, [pathname])
+    return null
+  }
+
   return (
     <>
       <BookingProvider>
         <Router>
+          <ScrollToTop />
           <Navbar cartCount={cartCount}/>
           <Routes>
             <Route path="/" element={<HomePage />}/>
